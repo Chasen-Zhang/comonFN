@@ -1,0 +1,250 @@
+@charset "UTF-8";
+/*CSS Reset*/
+body, div, ul, ol, li, dl, dt, dd, p, h1, h2, h3, h4, h5, h6, form, table, tr, td, th, button, input, select, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  border: none;
+  vertical-align: middle;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-size: 100%;
+  outline: none;
+}
+
+input, select, textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  border: 1px solid #ddd;
+}
+
+/*textarea{resize:none;}*/
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+em, i, strong, b {
+  font-style: normal;
+  font-weight: normal;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
+  display: block;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/*table td,table th{ border:1px solid #ddd;}*/
+table th {
+  font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font: 20px 'akkR','Microsoft YaHei',SimHei;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+:after, :before, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*box setting*/
+.wh100 {width:100%;height:100%}
+.w100 {  width: 100%;  }
+.h100 {  height: 100%;  }
+.wh50 {width:50%;height:50%}
+.w50 {  width: 50%;  }
+.h50 {  height: 50%;  }
+
+.db {  display: block;  }
+
+.dl {  display: inline-block;  }
+
+.hide {  display: none;  }
+
+.hidden {  visibility: hidden;  }
+
+/*clear and float*/
+.clear::after, .row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.fl {  float: left;  }
+
+.fr {  float: right; }
+/*cursor*/
+.cursor {  cursor: pointer;  }
+
+/*font*/
+.fs12 {  font-size: 0.12rem;  }
+.fs14 {  font-size:0.14rem;  }
+.fs16 {  font-size:0.16rem;  }
+.fs18 {  font-size:0.18rem;  }
+.fs20 {  font-size:0.2rem;  }
+.fs22 {  font-size:0.22rem;  }
+.fs24 {  font-size:0.24rem;  }
+.fs26 {  font-size:0.26rem;  }
+.fs28 {  font-size:0.28rem;  }
+.fs30 {  font-size:0.3rem;  }
+.fs32 {  font-size:0.32rem;  }
+.fs34 {  font-size:0.34rem;  }
+.fs36 {  font-size:0.36rem;  }
+.fs38 {  font-size:0.38rem;  }
+.fs40 {  font-size:0.4rem;  }
+.fs50 {  font-size:0.5rem;  }
+.fs58{  font-size: 0.58rem;  }
+.fs120 {  font-size: 1.2rem;  }
+
+/*position*/
+.pr {  position: relative;  }
+.pa {  position: absolute;  }
+.pf {  position: fixed;  }
+/*text setting*/
+.giveMeEllipsis {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.t-normal {
+  font-weight: normal;
+}
+
+.t-weight {
+  font-weight: 700;
+}
+
+.t-weightM {
+  font-weight: 400;
+}
+
+.t-italic {
+  font-style: italic;
+}
+
+.t-transformD {
+  text-transform: uppercase;
+}
+
+.t-transformX {
+  text-transform: lowercase;
+}
+
+.t-transformXD {
+  text-transform: capitalize;
+}
+.dl_inlineblock{
+  display: inline-block;
+}
+
+
+/* loading*/
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  margin-left: 10%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.dot {
+  width: 24px;
+  height: 24px;
+  background: #3ac;
+  border-radius: 100%;
+  display: inline-block;
+  animation: slide 1s infinite;
+}
+.dot:nth-child(1) {
+  animation-delay: 0.1s;
+  background: #32aacc;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #64aacc;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.3s;
+  background: #96aacc;
+}
+.dot:nth-child(4) {
+  animation-delay: 0.4s;
+  background: #c8aacc;
+}
+.dot:nth-child(5) {
+  animation-delay: 0.5s;
+  background: #faaacc;
+}
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
