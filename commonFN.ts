@@ -183,51 +183,6 @@ class CommonFN{
         r2 = Number(arg2.toString().replace(".", ""));
         return (r1 / r2) * Math.pow(10, t2 - t1);
     }
-
-    /**
-     * TODO: 创建弹窗
-     * @Param: {
-     *  domId: 弹窗ID
-     *  obj：内容对象
-     * }
-     * @return: null
-     */
-    createPopup(domId,obj):void{
-        let w100 = '100%';
-        let w50 = '50%';
-        let body = document.getElementsByTagName('body')[0];
-        let divMask = this.createTag('div');
-        let popup = this.createTag('div');
-        let header = this.createTag('div');
-        let bodyC = this.createTag('div');
-        divMask.id="gl-mask";
-        divMask.style.position="fixed";
-        divMask.style["z-index"] = 500;
-        divMask.style.width = w100;
-        divMask.style.height = w100;
-        divMask.style.backgroundColor ="rgba(0,0,0,0.2)";
-        body.appendChild(divMask);
-        divMask.appendChild(popup);
-        popup.appendChild(header);
-        popup.appendChild(bodyC);
-        popup.id = domId;
-        popup.style.width = obj.width+'px';
-        popup.style.height = obj.height+'px';
-        popup.style.position = 'absolute';
-        popup.style.left = w50;
-        popup.style.top = w50;
-        popup.style.marginLeft = -obj.width/2+'px';
-        popup.style.marginTop = -obj.height/2+'px';
-        popup.style.boxShadow = '0px 0px 10px #888';
-        popup.style['border-radius'] = '5px';
-        popup.style.backgroundColor= obj.backgroundColor?obj.backgroundColor:'#fff';
-        header.style.lineHeight = header.style.height = obj.header.height+'px';
-        header.style.paddingLeft = '20px';
-        header.style.width = w100;
-        header.style.borderBottom = obj.header['border'];
-        header.innerHTML ='<span style="">'+obj.header.text+'</span><i onclick="common.hidePopup('+domId+')" class="fr cursor" style="padding-right: 20px">X</i>';
-        bodyC.innerHTML = obj.body;
-    }
     /**
      * TODO: 创建元素
      * @Param: tag 需要创建的标签
@@ -305,7 +260,7 @@ class CommonFN{
     }
 
     /**
-     * TODO: 方法描述
+     * TODO: LocalStorage 本地持久化储存
      * @Param: null
      * @return: null
      */
@@ -319,28 +274,66 @@ class CommonFN{
         window.localStorage.removeItem(key);
     }
 
+    /**
+     * TODO: 滚动条离左右的距离 调用 scroll().top window.onscroll = function(){}
+     * @Param: null
+     * @return: {top , left}
+     */
+    scroll():object{
+        if(window.pageXOffset){
+            return {
+                top:window.pageYOffset,
+                left:window.pageXOffset
+            }
+        }else if(document.compatMode === 'CSS1Compat'){
+            return {
+                top: document.documentElement.scrollTop,
+                left: document.documentElement.scrollLeft
+            }
+        }
+        return {
+            top: document.body.scrollTop,
+            left: document.body.scrollLeft
+        }
+    }
+
+    /**
+     * TODO: 获取可视区宽度高度 调用 viewClient().width
+     * @Param: null
+     * @return: {width , height}
+     */
+    viewClient():object{
+        if(window.innerWidth){
+            return {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        }else if(document.compatMode === 'CSS1Compat'){
+            return {
+                width: document.documentElement.clientWidth,
+                height: document.documentElement.clientHeight
+            }
+        }
+        return {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight
+        }
+    }
+
+    /**
+     * TODO: 阻止冒泡
+     * @Param: event
+     * @return: null
+     */
+    stopPropagation(event):void{
+        let e  = event || window.event;
+        if(e && e.stopPropagation){
+            e.stopPropagation();
+        }else { //ie
+            e.cancelBubble = true;
+        }
+    }
 
 }
 let common = new CommonFN();
-let fmt = common.formatterDate(new Date(), 'yyyy年MM月dd日 hh:mm:ss');
-/*
-common.createPopup("popup",{
-    width:'400',
-    height:'200',
-    backgroundColor:'#fff',
-    header:{
-        text:'删除',
-        height:'36',
-        border:'1px solid #888'
-    },
-    body:'<div>2</div>'
-});*/
-common.createLoadings();
-/**/
-common.setCookies('ha',1,3);
-console.log(common.getCookies('ha'));
 
-/*common.setLocalStorage('KK',34,10);*/
-
-/*
-common.setLocalStorage("test",{value:10,time:new Date().getTime(),expire:10});*/
