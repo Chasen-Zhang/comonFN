@@ -334,6 +334,64 @@ class CommonFN{
         }
     }
 
+    /**
+     * 事件封装
+     *
+     * */
+    //添加句柄  添加事件
+    addHandler(element,type,handler){
+        //ele 元素
+        //type 事件类型
+        //handler 处理事件的函数程序
+        if (element.addEventListener) {
+            element.addEventListener(type,handler,false);
+        }else if (element.attachEvent) {
+            element.attachEvent('on'+type,handler);
+        }else{
+            element['on'+type]=handler;
+        }
+    }
+    //删除句柄  删除事件
+    removeHandler(element,type,handler){
+        if (element.removeEventListener) {
+            element.removeEventListener(type,handler,false);
+        }else if (element.detachEvent) {
+            element.detachEvent('on'+type,handler);
+        }else{
+            element['on'+type] = null;
+        }
+    }
+    //兼容event
+    getEvent(event){
+        return event?event:window.event;
+    }
+    //获取事件类型
+    getType(event){
+        return event.type;      //不存在浏览器兼容的问题
+    }
+    //获取事件目标
+    getElement(event){
+        return event.target || event.srcElement;
+    }
+    //阻止事件冒泡
+    preventDefault(event){
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue = false;
+        }
+    }
+    //阻止事件的默认行为
+    stopPropagation(event){
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        }else{
+            event.cancleBubble = true;
+        }
+    }
+
+
+
 }
 let common = new CommonFN();
 
